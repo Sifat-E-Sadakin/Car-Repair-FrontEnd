@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../../../public/assets/logo.svg'
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../UserProvider/UserProvider';
 
 const Navbar = () => {
+
+  let user = useContext(UserContext);
+  console.log(user);
     return (
         <div>
-            <div className="navbar bg-base-100 container mx-auto">
+            <div className="navbar  container mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -43,7 +47,8 @@ const Navbar = () => {
                                 <li><a>Submenu 2</a></li>
                             </ul>
                         </li>
-                        <li><a>Item 3</a></li>
+                        <Link to='/login'>Login</Link>
+                        <Link to='/signUp'>Sign Up</Link>
                     </ul>
                 </div>
                 <div className="navbar-end">
