@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Service = () => {
-    let [services, setServices] = useState([]);
+    let [ services, setServices] = useState([]);
 
     useEffect(() => {
-        fetch('services.json')
+        fetch('http://localhost:3000/services')
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])
@@ -28,7 +29,7 @@ const Service = () => {
                                 <h2 className="card-title">{service.title}</h2>
                                 <p className='text-error'>Price : {service.price}</p>
                                 <div className="card-actions flex justify-end">
-                                    <button className="btn btn-primary">Buy Now</button>
+                                    <Link to={`/checkout/${service._id}`}><button className="btn btn-primary">Buy Now</button></Link>
                                 </div>
                             </div>
                         </div>
