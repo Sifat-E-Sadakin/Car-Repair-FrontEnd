@@ -1,0 +1,47 @@
+import React from 'react';
+
+const ShowBookings = ({ booking, remove, update }) => {
+
+    let { _id, serviceImg, serviceName, amount, date, displayName, email, status } = booking
+    console.log(status);
+
+    
+
+
+
+    return (
+        <tr>
+            <th>
+                <button onClick={() => remove(_id)} className="btn btn-square btn-sm btn-outline">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </th>
+            <td>
+                <div className="flex items-center space-x-3">
+                    <div className="avatar">
+                        <div className="mask mask-squircle w-12 h-12">
+                            <img src={serviceImg} alt="Avatar Tailwind CSS Component" />
+                        </div>
+                    </div>
+                    <div>
+                        <div className="font-bold">{serviceName}</div>
+
+                    </div>
+                </div>
+            </td>
+            <td>
+                {displayName}
+            </td>
+            <td>{email}</td>
+            <td>{date}</td>
+            <td>{amount}</td>
+            <th>
+                {
+                    status == 'Confirmed' ? <span className='font-bold text-primary'>Confirmed</span> : <button onClick={() => update(_id)} className="btn btn-ghost btn-xs">Confirm</button>
+                }
+            </th>
+        </tr>
+    );
+};
+
+export default ShowBookings;

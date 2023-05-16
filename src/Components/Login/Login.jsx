@@ -17,6 +17,16 @@ const Login = () => {
         .then(user=>{
             let getUser = user.user;
             console.log(getUser);
+            fetch('http://localhost:3000/jwt',{
+                method: "POST",
+                headers:{'content-type': "application/json"},
+                body: JSON.stringify(user.email)
+            })
+            .then(res=> res.json())
+            .then(data=>{
+                console.log(data);
+                localStorage.setItem('AT', data.token )
+            })
         })
         .catch(err=>{
             setErr(err.message)
